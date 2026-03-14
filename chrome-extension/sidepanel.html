@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmolBrain</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">🧠</div>
+    <h1>SmolBrain</h1>
+    <span id="header-status">Ready</span>
+    <button id="new-chat-btn" title="New chat">
+      <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      New chat
+    </button>
+  </header>
+
+  <div id="main">
+    <!-- Empty state -->
+    <div id="empty-state">
+      <div class="empty-icon">✨</div>
+      <h2>Choose your explanation style</h2>
+      <p>Pick a mode below or type your own question to get started.</p>
+      <div id="mode-list">
+        <div class="mode-item" data-q="Explain this in the simplest way possible, like I've never heard of it before.">
+          🧠 <span>Smol Mode</span> - Explain simply</div>
+        <div class="mode-item" data-q="Explain this like a teacher would, step by step with examples.">🧑🏫
+          <span>Teacher Mode</span> - Step-by-step explanation</div>
+        <div class="mode-item" data-q="Give me a TLDR in 3 bullet points max.">⚡ <span>TLDR Mode</span> - 3 bullet
+          summary</div>
+        <div class="mode-item" data-q="Explain this like I'm 5, use bullet points and tiny words only.">👶 <span>ELI5
+            Mode</span> - Explain like I'm 5</div>
+      </div>
+    </div>
+
+    <!-- Explanation card -->
+    <div id="explanation-card">
+      <div class="card-header">
+        <span class="badge">ELI5</span>
+        <span class="page-title" id="page-title-label">Loading…</span>
+        <div class="card-actions">
+          <button class="icon-btn" id="copy-btn" title="Copy explanation">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z" />
+            </svg>
+          </button>
+          <button class="icon-btn" id="retry-btn" title="Retry">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="explanation-text"></div>
+    </div>
+
+    <!-- Chat divider -->
+    <div id="chat-divider">Ask a follow-up</div>
+
+    <!-- Chat messages -->
+    <div id="chat-messages"></div>
+  </div>
+
+  <!-- Suggestion chips -->
+  <div id="suggestions">
+    <span class="chip" data-q="Explain this in the simplest way possible, like I've never heard of it before.">🧠 Smol
+      Mode</span>
+    <span class="chip" data-q="Explain this like a teacher would, with examples and analogies.">👨🏻‍🏫 Teacher
+      Mode</span>
+    <span class="chip" data-q="Give me a TLDR in 3 bullet points max.">⚡️ TLDR</span>
+    <span class="chip" data-q="Explain this like I'm a baby, use tiny words only.">👶 Baby Mode</span>
+  </div>
+
+  <!-- Input -->
+  <div id="input-area">
+    <div class="input-row">
+      <textarea id="chat-input" rows="1" placeholder="Ask anything about this page…"></textarea>
+      <button id="send-btn" disabled>
+        <svg viewBox="0 0 24 24">
+          <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <p id="powered-by">⚡ Reasoning powered by <a href="https://featherless.ai/" target="_blank"
+      rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">featherless.ai</a> · Built using <a href="https://kiro.dev/" target="_blank"
+      rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">AWS Kiro</a></p>
+
+  <script src="marked.min.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+
+</html>
