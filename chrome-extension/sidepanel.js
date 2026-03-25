@@ -132,7 +132,7 @@ async function getPageContent() {
             error.message.includes("chrome://") ||
             tab.url?.startsWith("chrome://") ||
             tab.url?.startsWith("chrome-extension://") ||
-            tab.url?.includes("chrome.google.com/webstore")) {
+            tab.url?.includes("chromewebstore.google.com")) {
             throw new Error("This page can't be explained.\n\nChrome system pages and extension pages are protected for security reasons. Try visiting a regular website instead!");
         }
         // Re-throw other errors
