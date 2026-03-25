@@ -118,11 +118,26 @@ async function getPageContent() {
     if (pageContent) return pageContent;
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     pageTitleLabel.textContent = tab.title || "Current page";
-    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["content.js"] });
-    const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PAGE_CONTENT" });
-    pageContent = (response?.content || "").slice(0, 6000);
-    if (!pageContent.trim()) throw new Error("Could not extract page content.");
-    return pageContent;
+    
+    try {
+        await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["content.js"] });
+        const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PAGE_CONTENT" });
+        pageContent = (response?.content || "").slice(0, 6000);
+        if (!pageContent.trim()) throw new Error("Could not extract page content.");
+        return pageContent;
+    } catch (error) {
+        // Handle restricted pages (chrome://, chrome-extension://, Chrome Web Store, etc.)
+        if (error.message.includes("Cannot access") || 
+            error.message.includes("extensions gallery") ||
+            error.message.includes("chrome://") ||
+            tab.url?.startsWith("chrome://") ||
+            tab.url?.startsWith("chrome-extension://") ||
+            tab.url?.includes("chrome.google.com/webstore")) {
+            throw new Error("This page can't be explained.\n\nChrome system pages and extension pages are protected for security reasons. Try visiting a regular website instead!");
+        }
+        // Re-throw other errors
+        throw error;
+    }
 }
 
 // ── First message: show explanation card with skeleton ──
