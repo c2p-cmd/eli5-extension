@@ -9,18 +9,21 @@ Transform complex web content into easy-to-understand explanations using your ow
 ## ✨ Features
 
 ### 🎯 Multiple Explanation Modes
+
 - **Smol Mode**: Simplest possible explanation for beginners
 - **Teacher Mode**: Step-by-step explanations with examples
 - **TLDR Mode**: Quick 3-bullet point summaries
 - **ELI5 Mode**: Ultra-simple explanations using basic vocabulary
 
 ### 💬 Interactive Chat
+
 - Get instant AI-powered explanations of any webpage
 - Ask follow-up questions about the content
 - Maintain conversation context throughout your session
 - Beautiful typewriter animation for responses
 
 ### 🔧 Bring Your Own AI Provider
+
 - **Use your own API keys** - No vendor lock-in
 - **Provider presets** for quick setup:
   - Featherless AI (default)
@@ -31,6 +34,7 @@ Transform complex web content into easy-to-understand explanations using your ow
 - **Test connection** button to verify your settings
 
 ### ⚡ Modern Chrome Extension
+
 - Clean side panel interface (doesn't block your browsing)
 - Dark theme with smooth animations
 - Copy explanations to clipboard
@@ -44,8 +48,9 @@ Transform complex web content into easy-to-understand explanations using your ow
 ### From Source
 
 1. **Clone the repository**
+
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/c2p-cmd/eli5-extension.git
    cd eli5-extension
    ```
 
@@ -88,7 +93,7 @@ For any OpenAI-compatible API:
 
 1. **API URL**: Your provider's base URL
 2. **API Key**: Your authentication key (optional for Ollama)
-3. **Model Name**: The specific model to use (e.g., `gpt-4`, `llama2`)
+3. **Model Name**: The specific model to use (e.g., `glm-4.7-flash:latest`, `llama2`)
 
 ### Access Settings
 
@@ -109,7 +114,7 @@ For any OpenAI-compatible API:
 
 ## 📁 Project Structure
 
-```
+```bash
 eli5-extension/
 ├── chrome-extension/
 │   ├── manifest.json         # Extension configuration
@@ -127,8 +132,7 @@ eli5-extension/
 │   └── icons/                # Extension icons
 ├── images/                   # Screenshots
 ├── README.md                 # This file
-├── TEST_SITES.md            # Curated test websites
-└── PROJECT_OVERVIEW.md      # Technical documentation
+└── TEST_SITES.md            # Curated test websites
 ```
 
 ---
@@ -141,7 +145,7 @@ eli5-extension/
   - Tabs API
   - Scripting API
   - Storage API (for settings)
-- **Libraries**: 
+- **Libraries**:
   - Marked.js (Markdown rendering)
   - Mermaid.js (Diagram support)
 - **AI Integration**: Direct API integration with OpenAI-compatible providers
@@ -161,6 +165,7 @@ eli5-extension/
 ## 🎯 Ideal Use Cases
 
 This extension excels at simplifying:
+
 - 📚 Scientific papers and research articles
 - 🔧 Technical documentation and Wikipedia articles
 - 💰 Financial analysis and economic reports
@@ -183,16 +188,19 @@ See [TEST_SITES.md](./TEST_SITES.md) for curated test websites.
 ## 🐛 Troubleshooting
 
 ### "This page can't be explained"
+
 - You're on a restricted Chrome page (chrome://, chrome-extension://, or Chrome Web Store)
 - **Solution**: Visit a regular website instead
 
 ### "API Error" or connection issues
+
 - Check your API settings (click gear icon ⚙️)
 - Verify your API key is correct
 - Test connection in settings page
 - Check your provider's status page
 
 ### Extension not loading
+
 - Make sure you loaded the `chrome-extension` folder (not the root folder)
 - Check `chrome://extensions` for error messages
 - Try reloading the extension
@@ -202,6 +210,7 @@ See [TEST_SITES.md](./TEST_SITES.md) for curated test websites.
 ## 🤝 Contributing
 
 Contributions welcome! Please:
+
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
@@ -212,7 +221,7 @@ Contributions welcome! Please:
 
 ## 📝 License
 
-[Add your license here]
+[MIT](./LICENSE)
 
 ---
 
@@ -227,6 +236,7 @@ Contributions welcome! Please:
 ## 📞 Support
 
 For issues or questions:
+
 - Open an issue on GitHub
 - Check existing issues for solutions
 - Review the [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for technical details
