@@ -239,7 +239,6 @@ For issues or questions:
 
 - Open an issue on GitHub
 - Check existing issues for solutions
-- Review the [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) for technical details
 
 ---
 
