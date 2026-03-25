@@ -1,8 +1,3 @@
-// ── Config ──
-const API_KEY = "rc_3639ff4043057a19946d1225f1b1a9515439b73f61c96e4a955f5c422756789c";
-const BASE_URL = "https://api.featherless.ai/v1";
-const MODEL = "zai-org/GLM-5";
-
 // ── DOM refs ──
 const emptyState = document.getElementById("empty-state");
 const explanationCard = document.getElementById("explanation-card");
@@ -23,18 +18,67 @@ let lastPrompt = "";
 
 // ── API ──
 async function callLLM(messages) {
-    const res = await fetch(`${BASE_URL}/chat/completions`, {
+
+    const settings = await getSettings()
+
+    const baseUrl = settings.apiUrl || "https://api.featherless.ai/v1"
+    const model = settings.model || "zai-org/GLM-5"
+    const apiKey = settings.apiKey || ""
+
+    const headers = {
+        "Content-Type": "application/json"
+    }
+
+    // Only add auth if user provided a key (Ollama doesn't need one)
+    if (apiKey) {
+        headers["Authorization"] = `Bearer ${apiKey}`
+    }
+
+    const res = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify({ model: MODEL, messages, max_tokens: 600 }),
+        headers,
+        body: JSON.stringify({
+            model,
+            messages,
+            max_tokens: 600
+        }),
     });
-    const data = await res.json();
-    console.log("[SmolBrain] API response:", data);
-    if (!res.ok) throw new Error(data?.error?.message || `API error ${res.status}`);
-    return data.choices[0].message.content.trim();
+
+    const data = await res.json()
+
+    console.log("[SmolBrain] API response:", data)
+
+    if (!res.ok) {
+        throw new Error(data?.error?.message || `API error ${res.status}`)
+    }
+
+    return extractContent(data);
+}
+
+function extractContent(data) {
+
+    if (!data) return ""
+
+    if (data?.choices?.[0]?.message?.content)
+        return data.choices[0].message.content
+
+    if (data?.choices?.[0]?.text)
+        return data.choices[0].text
+
+    if (data?.message?.content)
+        return data.message.content
+
+    return ""
+}
+
+// ── Settings loader ──
+async function getSettings() {
+    return new Promise(resolve => {
+        chrome.storage.sync.get(
+            ["apiKey", "apiUrl", "model"],
+            resolve
+        );
+    });
 }
 
 // ── Helpers ──
