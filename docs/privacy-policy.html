@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - SmolBrain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f13 0%, #1a1a28 100%);
+            color: #e8e8f0;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #2a2a3e;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #f0f0ff;
+            margin-bottom: 12px;
+        }
+
+        .meta {
+            color: #6b6b8a;
+            font-size: 14px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #242433;
+            border: 2px solid #2a2a3e;
+            border-radius: 8px;
+            color: #d0d0e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            border-color: #7c3aed;
+            background: #2a2a3e;
+        }
+
+        .content {
+            background: #1a1a24;
+            border: 1px solid #2a2a3e;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #f0f0ff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #2a2a3e;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #d0d0e0;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #c0c0d0;
+        }
+
+        strong {
+            color: #f0f0ff;
+        }
+
+        ul,
+        ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #c0c0d0;
+        }
+
+        a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        .important {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .emoji {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid #2a2a3e;
+            color: #6b6b8a;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <span>←</span>
+            Back to Home
+        </a>
+
+        <header>
+            <div class="logo">
+                <img src="images/icon-128.png" alt="SmolBrain Icon">
+            </div>
+            <h1>Privacy Policy</h1>
+            <p class="meta">
+                Effective Date: 25th March 2026 • Last Updated: 25th March 2026
+            </p>
+        </header>
+
+        <div class="content">
+            <h2>Overview</h2>
+            <p>
+                SmolBrain is a Chrome browser extension that simplifies complex web content using AI.
+                This Privacy Policy explains how the extension handles data when you use it.
+            </p>
+
+            <div class="highlight-box">
+                <p><strong>Our Privacy Commitment:</strong></p>
+                <p>
+                    SmolBrain does not collect, store, or transmit any user data to the extension developer.
+                    All data handling occurs locally on your device or is sent directly to your chosen AI provider.
+                </p>
+            </div>
+
+            <h2>What Data We Access</h2>
+
+            <h3>1. Website Content</h3>
+            <p>
+                <strong>What:</strong> When you click the SmolBrain icon, the extension extracts visible text
+                (up to 6,000 characters) from the current webpage.
+            </p>
+            <p>
+                <strong>How it's used:</strong> This text is sent directly to your configured AI provider
+                (e.g., OpenAI, Ollama, or other OpenAI-compatible services) to generate simple explanations.
+            </p>
+            <p><strong>Important:</strong></p>
+            <ul>
+                <li>This data is <strong>only</strong> accessed when you explicitly click the extension icon</li>
+                <li>The webpage content is <strong>never stored</strong> on your device</li>
+                <li>The content goes <strong>directly to your chosen AI provider</strong>, not to SmolBrain developers
+                </li>
+                <li>The extension developer has <strong>no access</strong> to this data</li>
+            </ul>
+
+            <h3>2. API Authentication Credentials</h3>
+            <p>
+                <strong>What:</strong> Your AI provider's API key, API URL, and model name that you configure
+                in the settings page.
+            </p>
+            <p>
+                <strong>How it's stored:</strong> Stored locally in Chrome's encrypted storage
+                (<code>chrome.storage.sync</code>) on your device.
+            </p>
+            <p><strong>Important:</strong></p>
+            <ul>
+                <li>Your API key is <strong>never transmitted</strong> to SmolBrain developers</li>
+                <li>It's only sent to <strong>your chosen AI provider</strong> for authentication</li>
+                <li>You have <strong>full control</strong> to view, modify, or delete your API key at any time</li>
+                <li>API keys are stored using Chrome's secure, encrypted storage mechanism</li>
+            </ul>
+
+            <h3>3. Chat Conversations</h3>
+            <p>
+                <strong>What:</strong> Your questions and the AI's responses during a session.
+            </p>
+            <p><strong>How it's handled:</strong></p>
+            <ul>
+                <li>Stored temporarily in browser memory <strong>only during your active session</strong></li>
+                <li>Automatically cleared when you close the side panel or start a new chat</li>
+                <li><strong>Never persisted</strong> to disk or any server</li>
+                <li>Not accessible to SmolBrain developers</li>
+            </ul>
+
+            <h2>What Data We Do NOT Collect</h2>
+            <p>SmolBrain does <strong>NOT</strong> collect, store, access, or transmit:</p>
+            <ul>
+                <li>❌ Personal information (name, email, address, age)</li>
+                <li>❌ Health information</li>
+                <li>❌ Financial or payment information</li>
+                <li>❌ Location data (IP address, GPS, region)</li>
+                <li>❌ Web browsing history</li>
+                <li>❌ User activity (clicks, scrolling, keystrokes)</li>
+                <li>❌ Passwords or personal communications</li>
+                <li>❌ Any analytics or telemetry data</li>
+            </ul>
+
+            <h2>Third-Party Services</h2>
+            <p>
+                SmolBrain connects to <strong>AI providers that you choose and configure</strong>, such as:
+            </p>
+            <ul>
+                <li>OpenAI</li>
+                <li>Ollama (local)</li>
+                <li>Featherless AI</li>
+                <li>OpenRouter</li>
+                <li>Any OpenAI-compatible API service</li>
+            </ul>
+
+            <div class="important">
+                <p>
+                    <strong>Important:</strong> When you use SmolBrain, webpage content and your prompts are sent to
+                    <strong>your chosen AI provider</strong>. Each provider has their own privacy policy and data
+                    handling
+                    practices. Please review your chosen provider's privacy policy:
+                </p>
+                <ul style="margin-top: 12px;">
+                    <li>OpenAI: <a href="https://openai.com/privacy" target="_blank">https://openai.com/privacy</a></li>
+                    <li>Ollama: <a href="https://ollama.ai" target="_blank">https://ollama.ai</a></li>
+                    <li>Featherless AI: <a href="https://featherless.ai/privacy"
+                            target="_blank">https://featherless.ai/privacy</a></li>
+                    <li>OpenRouter: <a href="https://openrouter.ai/privacy"
+                            target="_blank">https://openrouter.ai/privacy</a></li>
+                </ul>
+            </div>
+
+            <p>
+                <strong>SmolBrain developers do not control or have access to data sent to third-party AI
+                    providers.</strong>
+            </p>
+
+            <h2>Data Security</h2>
+            <ul>
+                <li>API keys are stored using Chrome's encrypted <code>chrome.storage.sync</code></li>
+                <li>No data is transmitted to SmolBrain servers (we don't have any servers)</li>
+                <li>All code is open source and reviewable</li>
+                <li>No tracking, analytics, or telemetry</li>
+            </ul>
+
+            <h2>Your Rights and Control</h2>
+            <p>You have complete control over your data:</p>
+            <ul>
+                <li><strong>View/Edit Settings:</strong> Right-click the extension icon → Options</li>
+                <li><strong>Delete API Keys:</strong> Clear your settings at any time in the Options page</li>
+                <li><strong>Remove Extension:</strong> Uninstalling removes all locally stored data</li>
+                <li><strong>Choose Your Provider:</strong> You decide which AI service receives your data</li>
+            </ul>
+
+            <h2>Data Retention</h2>
+            <ul>
+                <li><strong>API Keys:</strong> Stored until you delete them or uninstall the extension</li>
+                <li><strong>Webpage Content:</strong> Not stored; sent directly to AI provider in real-time</li>
+                <li><strong>Chat History:</strong> Stored in memory only; cleared when you close the panel or start a
+                    new chat</li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>
+                SmolBrain does not knowingly collect data from children under 13. The extension is designed
+                for general audiences and does not target children.
+            </p>
+
+            <h2>Changes to This Privacy Policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time. Changes will be posted with an updated
+                "Last Updated" date. Continued use of the extension after changes constitutes acceptance of
+                the updated policy.
+            </p>
+
+            <h2>No Sale of Data</h2>
+            <div class="highlight-box">
+                <p>
+                    <strong>SmolBrain does not sell, rent, or share user data with any third parties.</strong>
+                    The only data transmission is webpage content sent directly to your configured AI provider
+                    for the sole purpose of generating explanations.
+                </p>
+            </div>
+
+            <h2>Contact Information</h2>
+            <p>For questions about this Privacy Policy or the extension:</p>
+            <ul>
+                <li>GitHub: <a href="https://github.com/c2p-cmd/eli5-extension" target="_blank">c2p-cmd/eli5-extension
+                    </a></li>
+                <li>Email: <a href="mailto:alexmercer02.st@gmail.com">alexmercer02.st@gmail.com</a></li>
+            </ul>
+
+            <h2>Legal Compliance</h2>
+            <p>This extension complies with:</p>
+            <ul>
+                <li>Chrome Web Store Developer Program Policies</li>
+            </ul>
+
+            <h2>Open Source</h2>
+            <p>
+                SmolBrain is open source. You can review the complete source code at:
+                <a href="https://github.com/c2p-cmd/eli5-extension"
+                    target="_blank">https://github.com/c2p-cmd/eli5-extension</a>
+            </p>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p>
+                    <strong>By using SmolBrain, you acknowledge that you have read and understood this Privacy
+                        Policy.</strong>
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                <a href="index.html">Home</a> •
+                <a href="https://github.com/c2p-cmd/eli5-extension" target="_blank">GitHub</a>
+            </p>
+            <p style="margin-top: 12px;">
+                &copy; 2026 SmolBrain. All rights reserved.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

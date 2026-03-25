@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmolBrain - Chrome Extension</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f13 0%, #1a1a28 100%);
+            color: #e8e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #2a2a3e;
+        }
+
+        .logo {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #f0f0ff;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #7c3aed, #9f67ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: #a0a0c0;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #d0d0e0;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #4f46e5);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: #242433;
+            border: 2px solid #2a2a3e;
+            color: #d0d0e0;
+        }
+
+        .btn-secondary:hover {
+            border-color: #7c3aed;
+            background: #2a2a3e;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: #1a1a24;
+            border: 1px solid #2a2a3e;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #7c3aed;
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: #f0f0ff;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #a0a0c0;
+            line-height: 1.6;
+        }
+
+        .screenshots {
+            margin: 60px 0;
+        }
+
+        .screenshots h2 {
+            font-size: 36px;
+            text-align: center;
+            color: #f0f0ff;
+            margin-bottom: 40px;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .screenshot-item {
+            background: #1a1a24;
+            border: 2px solid #2a2a3e;
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .screenshot-item:hover {
+            border-color: #7c3aed;
+            transform: scale(1.02);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .screenshot-caption {
+            margin-top: 16px;
+            text-align: center;
+            color: #a0a0c0;
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 2px solid #2a2a3e;
+            text-align: center;
+        }
+
+        footer p {
+            color: #6b6b8a;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="images/icon-128.png" alt="SmolBrain Icon">
+            </div>
+            <h1>SmolBrain</h1>
+            <p class="tagline">Internet, but simpler</p>
+            <p class="description">
+                Transform complex web content into easy-to-understand explanations using AI.
+                Perfect for research papers, technical documentation, legal documents, and dense articles.
+                Use your own API provider for complete control and privacy.
+            </p>
+            <div class="buttons">
+                <a href="https://chromewebstore.google.com/detail/[YOUR-EXTENSION-ID]" class="btn btn-primary">
+                    <span>🚀</span>
+                    Install on Chrome
+                </a>
+                <a href="https://github.com/c2p-cmd/eli5-extension" class="btn btn-secondary">
+                    <span>⭐</span>
+                    View on GitHub
+                </a>
+                <a href="privacy-policy.html" class="btn btn-secondary">
+                    <span>🔒</span>
+                    Privacy Policy
+                </a>
+            </div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Multiple Explanation Modes</h3>
+                <p>Choose from Smol Mode, Teacher Mode, TLDR, or ELI5 to get explanations tailored to your needs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Interactive Chat</h3>
+                <p>Ask follow-up questions and dive deeper into any topic with context-aware AI conversations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Bring Your Own AI</h3>
+                <p>Use your own API keys with OpenAI, Ollama, or any OpenAI-compatible provider. No vendor lock-in.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>No tracking, no analytics. Your data goes directly to your chosen AI provider. We never see it.</p>
+            </div>
+        </section>
+
+        <section class="screenshots">
+            <h2>See It In Action</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="images/SS1.png" alt="SmolBrain Extension Screenshot 1">
+                    <p class="screenshot-caption">Choose your explanation style</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/SS2.png" alt="SmolBrain Extension Screenshot 2">
+                    <p class="screenshot-caption">Get instant AI-powered explanations</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/SS3.png" alt="SmolBrain Extension Screenshot 3">
+                    <p class="screenshot-caption">Configure your AI provider</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/SS4.png" alt="SmolBrain Extension Screenshot 4">
+                    <p class="screenshot-caption">Chat with AI about the content</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                Built with ❤️ using <a href="https://kiro.dev/" target="_blank">AWS Kiro</a> •
+                <a href="privacy-policy.html">Privacy Policy</a> •
+                <a href="https://github.com/c2p-cmd/eli5-extension" target="_blank">GitHub</a>
+            </p>
+            <p style="margin-top: 12px;">
+                &copy; 2026 SmolBrain. Open source under [YOUR-LICENSE].
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
