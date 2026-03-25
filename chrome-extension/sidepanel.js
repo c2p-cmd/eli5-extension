@@ -10,11 +10,21 @@ const chatInput = document.getElementById("chat-input");
 const sendBtn = document.getElementById("send-btn");
 const headerStatus = document.getElementById("header-status");
 const mainEl = document.getElementById("main");
+const setupHint = document.getElementById("setup-hint");
 
 // ── State ──
 let pageContent = "";
 let conversationHistory = [];
 let lastPrompt = "";
+
+// ── Check if settings are configured on load ──
+(async function checkSettings() {
+    const settings = await getSettings();
+    // Show hint if using defaults (no custom API configured)
+    if (!settings.apiUrl && !settings.apiKey) {
+        setupHint.style.display = "flex";
+    }
+})();
 
 // ── API ──
 async function callLLM(messages) {
@@ -49,7 +59,8 @@ async function callLLM(messages) {
     console.log("[SmolBrain] API response:", data)
 
     if (!res.ok) {
-        throw new Error(data?.error?.message || `API error ${res.status}`)
+        const errorMsg = data?.error?.message || `API error ${res.status}`;
+        throw new Error(`${errorMsg}\n\nℹ️ Check your API settings by clicking the gear icon ⚙️`);
     }
 
     return extractContent(data);
@@ -262,4 +273,13 @@ document.getElementById("new-chat-btn").addEventListener("click", () => {
     lastPrompt = "";
     emptyState.style.display = "flex";
     headerStatus.textContent = "Ready";
+});
+
+document.getElementById("settings-btn").addEventListener("click", () => {
+    chrome.runtime.openOptionsPage();
+});
+
+document.getElementById("open-settings-link").addEventListener("click", (e) => {
+    e.preventDefault();
+    chrome.runtime.openOptionsPage();
 });
