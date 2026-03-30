@@ -2,7 +2,7 @@
 const PROVIDERS = {
   featherless: {
     apiUrl: "https://api.featherless.ai/v1",
-    model: "zai-org/GLM-5",
+    model: "meta-llama/Meta-Llama-3.1-8B-Instruct",
     name: "Featherless AI"
   },
   openai: {
@@ -12,7 +12,7 @@ const PROVIDERS = {
   },
   ollama: {
     apiUrl: "http://localhost:11434/v1",
-    model: "llama2",
+    model: "gpt-oss:20b",
     name: "Ollama"
   },
   openrouter: {
@@ -109,14 +109,9 @@ testBtn.addEventListener("click", async () => {
       headers["Authorization"] = `Bearer ${apiKey}`;
     }
 
-    const res = await fetch(`${apiUrl}/chat/completions`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        model,
-        messages: [{ role: "user", content: "Hi" }],
-        max_tokens: 10
-      })
+    const res = await fetch(`${apiUrl}/models`, {
+      method: "GET",
+      headers
     });
 
     if (res.ok) {
