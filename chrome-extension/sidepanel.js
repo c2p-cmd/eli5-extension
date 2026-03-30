@@ -28,38 +28,49 @@ let lastPrompt = "";
 
 // ── API ──
 async function callLLM(messages) {
+    const settings = await getSettings();
+    let baseUrl = settings.apiUrl || "https://api.featherless.ai/v1";
+    let model = settings.model || "";
+    const apiKey = settings.apiKey || "";
 
-    const settings = await getSettings()
-
-    const baseUrl = settings.apiUrl || "https://api.featherless.ai/v1"
-    const model = settings.model || "zai-org/GLM-5"
-    const apiKey = settings.apiKey || ""
-
-    const headers = {
-        "Content-Type": "application/json"
-    }
-
-    // Only add auth if user provided a key (Ollama doesn't need one)
+    const headers = { "Content-Type": "application/json" };
+    // Only add auth if user provided a key
     if (apiKey) {
-        headers["Authorization"] = `Bearer ${apiKey}`
+        headers["Authorization"] = `Bearer ${apiKey}`;
     }
 
     const res = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",
         headers,
-        body: JSON.stringify({
-            model,
-            messages,
-            max_tokens: 600
-        }),
+        body: JSON.stringify({ model, messages, max_tokens: 600 })
     });
 
-    const data = await res.json()
+    // ---- safe JSON parsing ----
+    const ct = res.headers.get("content-type") || "";
+    let data;
+    if (ct.includes("application/json")) {
+        try {
+            data = await res.json();
+        } catch (_) {
+            data = null;
+        }
+    } else {
+        // fallback for non‑JSON bodies (e.g., HTML error page)
+        const text = await res.text();
+        try {
+            data = JSON.parse(text);
+        } catch (_) {
+            data = { error: { message: text.trim() } };
+        }
+    }
+    // ---------------------------
 
-    console.log("[SmolBrain] API response:", data)
+    console.log("[SmolBrain] API response:", data);
 
     if (!res.ok) {
-        const errorMsg = data?.error?.message || `API error ${res.status}`;
+        const errorMsg = (data && data.error && data.error.message) || `API error ${res.status}`;
+        console.log("error!!");
+        console.error(errorMsg);
         throw new Error(`${errorMsg}\n\nℹ️ Check your API settings by clicking the gear icon ⚙️`);
     }
 
@@ -118,7 +129,7 @@ async function getPageContent() {
     if (pageContent) return pageContent;
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     pageTitleLabel.textContent = tab.title || "Current page";
-    
+
     try {
         await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["content.js"] });
         const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PAGE_CONTENT" });
@@ -127,7 +138,7 @@ async function getPageContent() {
         return pageContent;
     } catch (error) {
         // Handle restricted pages (chrome://, chrome-extension://, Chrome Web Store, etc.)
-        if (error.message.includes("Cannot access") || 
+        if (error.message.includes("Cannot access") ||
             error.message.includes("extensions gallery") ||
             error.message.includes("chrome://") ||
             tab.url?.startsWith("chrome://") ||
