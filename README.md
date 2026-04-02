@@ -2,6 +2,8 @@
 
 > **Internet, but simpler**
 
+[**Download Now**](https://chromewebstore.google.com/detail/jhkpgjobmoamadofcghfeedpclbmappi?utm_source=item-share-cb)
+
 Transform complex web content into easy-to-understand explanations using your own AI provider. Perfect for research papers, technical docs, legal documents, and dense articles.
 
 ![SmolBrain Demo](./images/Screenshot%202026-03-16%20at%2020.23.31.png)
